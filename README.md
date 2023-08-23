@@ -29,8 +29,18 @@ install:
  Microsoft.EntityFrameworkCore.SqlServer
  Microsoft.EntityFrameworkCore.SqlServer.Tools
 
+Migration:
+Add Migration firsttimemigration
+Update-database
 
-#work:1
+back to previous migration(if there is only one migration):
+update-migration 0
+
+remove-migration
+
+ ```
+
+## work:1
 
 1.Add Class Model,brand and Features in model folder.
 2.Create DB Context in Contex folder.
@@ -38,6 +48,9 @@ install:
 4.Add Connectionstring
 5.Setup setvice file with connectionstring in program file 
 6.Set DbSet in DB_Contex 
-7.Add Migration firsttimemigration
-8.Update-database
+7.Migration database
+
+## work :2
+
+1.Setup  for Annotations;
 

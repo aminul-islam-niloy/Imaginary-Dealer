@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Imaginary_Dealer.Migrations
 {
     [DbContext(typeof(Im_Dealer_DB_Contex))]
-    [Migration("20230823143909_firstTimeConfiguration")]
-    partial class firstTimeConfiguration
+    [Migration("20230823154853_ModelSet1")]
+    partial class ModelSet1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,7 +34,8 @@ namespace Imaginary_Dealer.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.HasKey("Id");
 
@@ -54,7 +55,8 @@ namespace Imaginary_Dealer.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.HasKey("Id");
 
