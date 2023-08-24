@@ -1,4 +1,5 @@
 using Imaginary_Dealer.AppDBContex;
+using Imaginary_Dealer.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
@@ -12,6 +13,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<Im_Dealer_DB_Contex>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ID_Default_server") ?? throw new InvalidOperationException("Connection string 'ID_Default_server' not found.")));
 //builder.Services.AddScoped<ProductManager>();
+//builder.Services.AddScoped<Brand>();
 
 
 var app = builder.Build();

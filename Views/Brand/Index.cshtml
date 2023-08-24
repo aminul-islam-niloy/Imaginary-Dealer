@@ -1,0 +1,50 @@
+﻿
+@model IEnumerable<Imaginary_Dealer.Models.Brand>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Brand List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="text-info">Brands of Vehicles</h2>
+            </div>
+          
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead class="thead-info">
+                        <tr>
+                            <th>Brand Name</th>
+                            <th class="text-right">
+                                <a class="btn btn-info btn-sm" asp-action="Create">Add Brand</a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(m => item.Name)</td>
+                                <td class="text-right">
+                                    <a href="#" class="btn btn-sm btn-primary">Edit</a>
+                                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

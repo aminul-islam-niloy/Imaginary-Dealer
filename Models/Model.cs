@@ -10,9 +10,9 @@ namespace Imaginary_Dealer.Models
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
-        public Brand Make { get; set; }
+        public Brand Brand { get; set; }
 
-        [ForeignKey("Make")]
+        [ForeignKey("Brand")]
         public int BrandF_K { get; set;}
 
 
