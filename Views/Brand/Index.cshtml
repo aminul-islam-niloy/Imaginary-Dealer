@@ -1,5 +1,4 @@
-﻿
-@model IEnumerable<Imaginary_Dealer.Models.Brand>
+﻿@model IEnumerable<Imaginary_Dealer.Models.Brand>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,42 +8,38 @@
 </head>
 <body>
 
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-6">
-                <h2 class="text-info">Brands of Vehicles</h2>
-            </div>
-          
-        </div>
-
-        <div class="row mt-4">
-            <div class="col-md-12">
-                <table class="table table-striped">
-                    <thead class="thead-info">
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead class="thead-info">
+                    <tr>
+                        <th>Brand Name</th>
+                        <th class="text-right">
+                            <a class="btn btn-info btn-sm" asp-action="Create">Add Brand</a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
                         <tr>
-                            <th>Brand Name</th>
-                            <th class="text-right">
-                                <a class="btn btn-info btn-sm" asp-action="Create">Add Brand</a>
-                            </th>
+                            <td>@Html.DisplayFor(m => item.Name)</td>
+                            <td class="text-right">
+                                <div class="btn-group" role="group">
+                                    <a type="button" class="btn btn-primary btn-sm" href="@Url.Action("Edit", new { id = item.Id })">Edit</a>
+
+                                    <form method="post" action="@Url.Action("Delete", new { id = item.Id })">
+                                        <input onclick="return confirm('Are you sure you want to delete this brand?');" type="submit" class="btn btn-danger btn-sm" value="Delete" />
+                                    </form>
+                                </div>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>@Html.DisplayFor(m => item.Name)</td>
-                                <td class="text-right">
-                                    <a href="#" class="btn btn-sm btn-primary">Edit</a>
-                                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
 
+
 </body>
 </html>
-

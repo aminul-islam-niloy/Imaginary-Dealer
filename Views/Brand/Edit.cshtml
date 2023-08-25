@@ -1,0 +1,31 @@
+﻿@model Imaginary_Dealer.Models.Brand
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <div class="container mt-5">
+        <h4 class="mb-4">Edit Brand</h4>
+        <h4 class="text-info mb-4">Edit Brand of Vehicle</h4>
+
+        <form method="post" action="Edit">
+            <div class="form-group row">
+                <label for="Name" class="col-md-2 col-form-label font-weight-bold">Brand Name:</label>
+                <div class="col-md-4">
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <div class="col-md-6 text-right">
+                    <button type="submit" class="btn btn-primary mr-3 " asp-route-id="@Model.Id">Update</button>
+                    <a asp-action="Index" class="btn btn-success">Back to Home</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</body>
+</html>

@@ -37,8 +37,50 @@ namespace Imaginary_Dealer.Controllers
            return View(brand);
 			
 		}
-		//brands/bikes
-		public IActionResult Bikes()
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+          var brand= _db.Brands.Find(id);
+            if(brand == null)
+            {
+                return NotFound();
+            }
+            _db.Brands.Remove(brand);
+            _db.SaveChanges();
+            return RedirectToAction("Index");   
+
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var brand = _db.Brands.Find(id);
+            if (brand == null)
+            {
+                return NotFound();
+            }
+            
+            return View(brand);
+
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Brand brand)
+        {
+
+            if (ModelState.IsValid)
+            {
+                _db.Brands.Update(brand);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(brand);
+
+        }
+
+
+        //brands/bikes
+        public IActionResult Bikes()
         {
 
 
