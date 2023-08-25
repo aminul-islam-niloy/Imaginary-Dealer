@@ -1,0 +1,51 @@
+﻿@model Imaginary_Dealer.Models.ViewModels.ModelViewModel;
+@{
+    ViewData["Title"] = "Create";
+}
+
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <div class="container mt-5">
+        <h4 class="mb-4">Create model</h4>
+        <h4 class="text-info mb-4">Add model of Vehicle</h4>
+
+        <form method="post" action="Create">
+            <div class="form-group row">
+
+                <div class="col-2">
+                    <label asp-for="Brands" class="form-control"> </label>
+                </div>
+                <div class="col-md-4">
+                    <select asp-for="Model.BrandF_K" asp-items="Model.CSelectListItem(Model.Brands)" class="form-control"></select>
+                </div>
+                    <div>
+                            <div class="form-group row">
+
+                                <div class="col-2">
+                                    <lable asp-for="Name"> </lable>
+                                </div>
+
+                                <div class="col-4">
+                                    <input asp-for="Model.Name" class="form-control" />
+                                </div>
+               
+                            </div>
+
+                            <br />
+
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary" value="Create" />
+                                <a asp-action="Index" class="btn btn-success">Back to Home</a>
+                            </div>
+                     </div>
+
+            </div>
+        </form>
+    </div>
+
+
+</body>
+</html>
