@@ -12,11 +12,8 @@ namespace Imaginary_Dealer.Models
         public string Name { get; set; }
         public Brand Brand { get; set; }
 
-        [ForeignKey("Brand")]
-        public int BrandF_K { get; set;}
-
-
-
+        [ForeignKey(nameof(Brand))]
+        public int BrandId { get; set;}
 
     }
 }

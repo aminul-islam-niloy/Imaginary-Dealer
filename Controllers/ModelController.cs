@@ -29,8 +29,25 @@ namespace Imaginary_Dealer.Controllers
             return View(model);
         }
 
-        public IActionResult Create() { 
-        return View(ViewModel);
+        public IActionResult Create()
+        { 
+             return View( ViewModel);
         }
+
+        [HttpPost,ActionName("Create")]
+        public IActionResult CreatePost(ModelViewModel viewModel) 
+        {
+            if (ModelState.IsValid)
+            {
+                return View("Create", ViewModel);
+            }
+            _db.Models.Add(ViewModel.Model);
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
+
+        }
+
+
     }
 }
