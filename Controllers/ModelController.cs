@@ -50,7 +50,8 @@ namespace Imaginary_Dealer.Controllers
 
         public IActionResult Edit(int id) 
         {
-            ViewModel.Model = _db.Models.Include(m => m.Brand).SingleOrDefault(m => m.Id == id);
+            ViewModel.Model = _db.Models.Include(m =>
+            m.Brand).SingleOrDefault(m => m.Id == id);
             if (ViewModel.Model == null)
             {
                 return NotFound();
