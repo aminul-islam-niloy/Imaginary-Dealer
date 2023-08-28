@@ -1,4 +1,5 @@
 ﻿using Imaginary_Dealer.AppDBContex;
+using Imaginary_Dealer.Models;
 using Imaginary_Dealer.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -75,6 +76,22 @@ namespace Imaginary_Dealer.Controllers
             _db.Update(ViewModel.Model);
             _db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            Model model = _db.Models.Find(id);
+
+            if(model == null)
+            {
+                return NotFound();  
+
+            }
+            _db.Remove(model);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+
         }
 
 
