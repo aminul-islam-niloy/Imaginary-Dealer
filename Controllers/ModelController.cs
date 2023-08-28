@@ -48,6 +48,34 @@ namespace Imaginary_Dealer.Controllers
 
         }
 
+        public IActionResult Edit(int id) 
+        {
+            ViewModel.Model = _db.Models.Include(m => m.Brand).SingleOrDefault(m => m.Id == id);
+            if (ViewModel.Model == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return View(ViewModel);
+            }
+          
+
+        }
+
+        [HttpPost,ActionName("Edit")]
+        public IActionResult EditPost()
+        {
+            if(ModelState.IsValid)
+            {
+                return View(ViewModel);
+            }
+
+            _db.Update(ViewModel.Model);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
 
     }
 }

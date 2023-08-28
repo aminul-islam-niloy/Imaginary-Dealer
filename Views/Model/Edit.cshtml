@@ -1,7 +1,10 @@
 ﻿@model Imaginary_Dealer.Models.ViewModels.ModelViewModel;
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
+
+<h1>Edit</h1>
+
 
 <!DOCTYPE html>
 <html>
@@ -9,10 +12,11 @@
 <body>
 
     <div class="container mt-5">
-        <h4 class="mb-4">Create model</h4>
+        <h4 class="mb-4">Edit model</h4>
         <h4 class="text-info mb-4">Add model of Vehicle</h4>
 
-        <form method="post" action="Create">
+        <form method="post" action="Edit">
+            <input hidden asp-for="Model.Id"/>
             <div class="form-group row">
 
                 <div class="col-2">
@@ -44,7 +48,7 @@
                            
                      </div col-md-6>
                 <div class="form-group col-md-6">
-                    <input type="submit" class="btn btn-primary" value="Create" />
+                    <input type="submit" class="btn btn-primary" value="Update" />
                     <a asp-action="Index" class="btn btn-success">Back to Home</a>
                 </div>
 
@@ -57,5 +61,3 @@
 
 </body>
 </html>
-
- 
