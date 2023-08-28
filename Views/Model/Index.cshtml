@@ -65,17 +65,15 @@
 
                             </td>
 
-                            <td class="text-right">
-                                <div class="btn-group" role="group">
-                                    <a type="button" class="btn btn-primary btn-sm" href="@Url.Action("Edit", new { id = item.Id })"><i class="fa-regular fa-pen-to-square"></i></a>
+                
+                        <partial name="_TableButtonPartial" model="item.Id" />
+                    
 
-                                    <form method="post" action="@Url.Action("Delete", new { id = item.Id })">
-                                        <button onclick="return confirm('Are you sure you want to delete this brand?');" type="submit" class="btn btn-danger btn-sm" > <i class="fa-solid fa-trash"></i></button>
-                                    </form>
-                                </div>
-                            </td>
                         </tr>
+
                     }
+
+            
                 
 
 
