@@ -9,7 +9,7 @@ namespace Imaginary_Dealer.Models
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
-        public ICollection<Model> Models { get; set; }
+       // public ICollection<Model> Models { get; set; }
 
     }
 }

@@ -59,7 +59,7 @@ namespace Imaginary_Dealer.Controllers
             {
                 return NotFound();
             }
-            
+        
             return View(brand);
 
         }
@@ -79,12 +79,6 @@ namespace Imaginary_Dealer.Controllers
         }
 
 
-        //brands/bikes
-        public IActionResult Bikes()
-        {
-
-
-            return View();
-        }
+    
     }
 }
