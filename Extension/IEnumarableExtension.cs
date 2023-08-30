@@ -19,8 +19,8 @@ namespace Imaginary_Dealer.Extension
             {
                 item = new SelectListItem
                 {
-                    Text = brand.GetType().GetProperty("Name").GetValue(brand, null).ToString(),
-                    Value = brand.GetType().GetProperty("Id").GetValue(brand, null).ToString()
+                    Text = brand.GetPropertyValue("Name"),
+                    Value= brand.GetPropertyValue("Id")
                 };
                 list.Add(item);
             }
