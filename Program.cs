@@ -3,6 +3,7 @@ using Imaginary_Dealer.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Identity;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<Im_Dealer_DB_Contex>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ID_Default_server") ?? throw new InvalidOperationException("Connection string 'ID_Default_server' not found.")));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<Im_Dealer_DB_Contex>();
 //builder.Services.AddScoped<ProductManager>();
 //builder.Services.AddScoped<Brand>();
 
@@ -33,8 +36,11 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+app.MapRazorPages();
 app.Run();

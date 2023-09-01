@@ -62,6 +62,11 @@ remove-migration
 
 for authintication
 1.Add Scaffold and Identity
+2.Select DbContext.(Inharite Identity and confiqure for database.
+3.Add-migration addIdentity
+4.update-database
+
+
 
 
 
