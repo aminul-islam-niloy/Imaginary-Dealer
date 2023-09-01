@@ -53,4 +53,15 @@ remove-migration
 ## work :2
 
 1.Setup  for Annotations;
+2.Razer CSHTML 
+3.Implement CURD operation for Model and Bike 
+
+## work 3
+1.User authentication and authorization
+2.Acces to the differnent role of this project
+
+for authintication
+1.Add Scaffold and Identity
+
+
 
