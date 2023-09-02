@@ -66,7 +66,24 @@ for authintication
 3.Add-migration addIdentity
 4.update-database
 
+## For extra Phone added on Authentication
 
+1.Create an Class on Model.Inherite it from IdentityUser.
+2.Set Constrains [Not Mapped] on database.
+3.add migration
+4.update database.
+5.Add this new on registration interface
+6.Microsoft added Identity on razor pages
+
+
+
+## ASP MVC
+1. Controller:homeController 
+2.--> model:PageClass.cs-->
+3.View:Home:ManagePages.cshtml
+
+## Razor Page:
+1.Pages:ManagePages.cshtml.cs
 
 
 

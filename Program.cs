@@ -14,7 +14,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<Im_Dealer_DB_Contex>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ID_Default_server") ?? throw new InvalidOperationException("Connection string 'ID_Default_server' not found.")));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<Im_Dealer_DB_Contex>();
+builder.Services.AddIdentity<IdentityUser,IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<Im_Dealer_DB_Contex>()
+    .AddDefaultUI()
+    .AddDefaultTokenProviders();
 //builder.Services.AddScoped<ProductManager>();
 //builder.Services.AddScoped<Brand>();
 
