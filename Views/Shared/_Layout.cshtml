@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Imaginary_Dealer.RolesAction;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -24,25 +25,25 @@
                         <li class="nav-item">
                             <a class="nav-link active"  aria-current="page">Home</a>
                         </li>
-                       
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Select
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @if(User.IsInRole(Roles.Admin)|| User.IsInRole(Roles.Excuative))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Select
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                                <li><a class="dropdown-item" asp-controller="Brand" asp-action="Index">Brand</a></li>
-                                <li><a class="dropdown-item" asp-controller="Model" asp-action="Index">Model</a></li>
-                             
+                                    <li><a class="dropdown-item" asp-controller="Brand" asp-action="Index">Brand</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Model" asp-action="Index">Model</a></li>
+
+                                </ul>
+                            </li>
                             
-                            </ul>
-                        </li>
+                        }
+                     
                       
                     </ul>
-                    @* <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form> *@
+                  
 
                     <partial name="_LoginPartial" />
                 </div>
@@ -52,12 +53,7 @@
      
     </header>
 
-    @* <div>
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-    </div> *@
+  
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

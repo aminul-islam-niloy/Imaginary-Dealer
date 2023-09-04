@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Imaginary_Dealer.Models;
 using Imaginary_Dealer.AppDBContex;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Imaginary_Dealer.Controllers
 {
+    [Authorize(Roles = "Admin,Excuative")]
     public class BrandController : Controller
     {
         public readonly Im_Dealer_DB_Contex _db;

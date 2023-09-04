@@ -1,11 +1,13 @@
 ﻿using Imaginary_Dealer.AppDBContex;
 using Imaginary_Dealer.Models;
 using Imaginary_Dealer.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Imaginary_Dealer.Controllers
 {
+    [Authorize(Roles = "Admin,Excuative")]
     public class ModelController : Controller
     {
         public readonly Im_Dealer_DB_Contex _db;
