@@ -11,7 +11,7 @@ namespace Imaginary_Dealer.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        [DisplayName("Office Phone ")]
+        [DisplayName(" Phone Number ")]
         public string OthersPhoneNumber { get; set; }
 
         [NotMapped]

@@ -43,11 +43,35 @@
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
 
-            <div class="form-floating mb-3">
+         @*    <div class="form-floating mb-3">
                 <label asp-for="Input.isAdmin">Admin</label>
                 <input asp-for="Input.isAdmin" class="form-control" />
                
+            </div> *@
+            <div >
+                <div class="form-check form-check-inline">
+                    <input asp-for="Input.isAdmin" class="form-check-input" type="checkbox">
+                    <label class="form-check-label" for="isAdminCheckbox">As Admin</label>
+                </div>
+                <div class="form-check  form-check-inline">
+                    <input asp-for="Input.isExcuative" class="form-check-input" type="checkbox">
+                    <label class="form-check-label" for="iExcuativeCheckbox">As Executive</label>
+                </div>
+
+                <div class="form-check  form-check-inline">
+                    <input asp-for="Input.isUser" class="form-check-input" type="checkbox">
+                    <label class="form-check-label" for="isUserCheckbox">As User</label>
+                </div>
+
+                
+
             </div>
+            <div>
+                <br />
+              
+            </div>
+          
+
 
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
         </form>
