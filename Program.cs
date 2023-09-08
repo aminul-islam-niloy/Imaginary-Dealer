@@ -4,7 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Identity;
-
+using Imaginary_Dealer.Data;
+using vroom.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,11 +18,22 @@ builder.Services.AddDbContext<Im_Dealer_DB_Contex>(options =>
 builder.Services.AddIdentity<IdentityUser,IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<Im_Dealer_DB_Contex>()
     .AddDefaultUI()
     .AddDefaultTokenProviders();
-//builder.Services.AddScoped<ProductManager>();
-//builder.Services.AddScoped<Brand>();
+//builder.Services.AddScoped<IDbInitializer>();
+
+
+builder.Services.AddScoped<IDbInitializer, DBInitializer>();
+
 
 
 var app = builder.Build();
+
+//using (var scope = app.Services.CreateScope())
+//{
+//    var services = scope.ServiceProvider;
+//    var dbInitializer = services.GetRequiredService<IDbInitializer>();
+//    dbInitializer.Initialize(); // Call your database seeding logic here
+//}
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

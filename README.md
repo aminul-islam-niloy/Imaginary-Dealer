@@ -86,7 +86,8 @@ for authintication
 1.Pages:ManagePages.cshtml.cs
 
 ## Work 4 
-<h2> Deploy Application <h2> 
+<h2> Database Seeding <h2> 
+
 
 
 
