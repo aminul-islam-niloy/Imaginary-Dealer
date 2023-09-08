@@ -85,5 +85,9 @@ for authintication
 ## Razor Page:
 1.Pages:ManagePages.cshtml.cs
 
+## Work 4 
+<h2> Deploy Application <h2> 
+
+
 
 
