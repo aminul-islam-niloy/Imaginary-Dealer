@@ -94,6 +94,9 @@ setting up user and admin role.
 note: onDelete: ReferentialAction.Cascade); remove Cascade with NoAction 
 so that existing value of  brand and model did not delete.
 
+4. Create Bike View model and Make payment method sysyem for view features
+5. Add New BikeController in Controller
+
 
 
 

@@ -7,7 +7,5 @@ namespace Imaginary_Dealer.Models.ViewModels
         public Model Model { get; set; }
         public IEnumerable<Brand> Brands { get; set; }
 
-  
-
     }
 }
