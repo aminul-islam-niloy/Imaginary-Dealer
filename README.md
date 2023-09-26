@@ -87,6 +87,14 @@ for authintication
 setting up user and admin role.
 
 ## Bike features 
+1.add class with property.
+2.Setup db context
+3. add migration and update database
+
+note: onDelete: ReferentialAction.Cascade); remove Cascade with NoAction 
+so that existing value of  brand and model did not delete.
+
+
 
 
 

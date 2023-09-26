@@ -14,6 +14,7 @@ namespace Imaginary_Dealer.AppDBContex
         }  
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Model> Models { get; set; }
+        public DbSet<Bike> Bikes { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
     }

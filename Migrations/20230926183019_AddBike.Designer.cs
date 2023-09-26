@@ -4,6 +4,7 @@ using Imaginary_Dealer.AppDBContex;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Imaginary_Dealer.Migrations
 {
     [DbContext(typeof(Im_Dealer_DB_Contex))]
-    partial class Im_Dealer_DB_ContexModelSnapshot : ModelSnapshot
+    [Migration("20230926183019_AddBike")]
+    partial class AddBike
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
