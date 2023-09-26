@@ -1,0 +1,73 @@
+﻿@* @model IEnumerable<Imaginary_Dealer.Models.Model> *@
+@model IEnumerable<Imaginary_Dealer.Models.Bike>
+
+
+<br />
+<br />
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Bikes</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <table class="table table-striped">
+        <thead class="thead-info">
+            <tr>
+                <th>Bike List </th>
+                <th class="text-right">
+                    <a class="btn btn-info btn-sm" asp-action="Create"><i class="fa-solid fa-motorcycle">&nbsp; ADD BIKE  </i></a>
+                </th>
+            </tr>
+        </thead>
+    </table>
+
+
+    <div>
+        <br />
+    </div>
+
+
+    <div class="col-md-12">
+        <table class="table table-striped border">
+            <tr class="table-info">
+               <th>Bike Photo</th>
+                <th>Bike Details</th>
+                <th>Price</th>
+                <th>Seller Info</th>
+                <th> </th>
+            </tr>
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><img src="@Html.DisplayFor(m => item.ImagePath)" width="150" height="100" /></td>
+                    <td>
+                        <b>@Html.DisplayFor(m => item.Brand.Name) (@Html.DisplayFor(m => item.Year))</b> <br />
+                        <b>Model: </b>@Html.DisplayFor(m => item.Model.Name)<br />
+                        <b>Mileage: </b>@Html.DisplayFor(m => item.Mileage)
+                    </td>
+                    <td>@Html.DisplayFor(m => item.Price) @Html.DisplayFor(m => item.PaymentMethod)</td>
+                    <td>
+                        <b>Name: </b> @Html.DisplayFor(m => item.SellerName)<br />
+                        <b>Email: </b>@Html.DisplayFor(m => item.SellerEmail)<br />
+                        <b>Phone: </b>@Html.DisplayFor(m => item.SellerPhone)<br/>
+                        <b>Phone: </b>@Html.DisplayFor(m => item.SellerLocation)
+                    </td>
+
+                        <partial name="_TableButtonPartials" model="item.Id" />
+                    
+                </tr>
+
+            }
+
+        </table>
+    </div>
+
+</body>
+</html>
