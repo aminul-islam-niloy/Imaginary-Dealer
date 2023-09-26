@@ -15,6 +15,7 @@ namespace Imaginary_Dealer.Models
        
         [Required]
         public int Mileage { get; set;}
+      
         public string Features { get; set; }
 
         public string SellerName { get; set; }
