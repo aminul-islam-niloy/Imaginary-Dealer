@@ -84,6 +84,9 @@ for authintication
 
 ## Razor Page:
 1.Pages:ManagePages.cshtml.cs
+setting up user and admin role.
+
+## Bike features 
 
 
 
