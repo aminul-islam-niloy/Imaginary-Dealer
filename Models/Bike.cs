@@ -24,8 +24,7 @@ namespace Imaginary_Dealer.Models
         [Required]
         public string SellerPhone { get; set; }
         
-        [Required]
-        public string SellerLocation { get;}
+       // public string SellerLocation { get;}
 
 
         [Required]

@@ -56,8 +56,8 @@
                     <td>
                         <b>Name: </b> @Html.DisplayFor(m => item.SellerName)<br />
                         <b>Email: </b>@Html.DisplayFor(m => item.SellerEmail)<br />
-                        <b>Phone: </b>@Html.DisplayFor(m => item.SellerPhone)<br/>
-                        <b>Address: </b>@Html.DisplayFor(m => item.SellerLocation)
+                        <b>Phone: </b>@Html.DisplayFor(m => item.SellerPhone)
+                       @*  <b>SellerLocation: </b>@Html.DisplayFor(m => item.SellerLocation) *@
                     </td>
 
                         <partial name="_TableButtonPartials" model="item.Id" />

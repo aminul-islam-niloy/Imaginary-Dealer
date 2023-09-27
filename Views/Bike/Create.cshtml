@@ -6,36 +6,49 @@
 
 <br />
 <h2 class="text-info">Add Bike</h2>
-<form method="post" asp-action="Create">
+@*  Encoding File for image enctype *@
+<form method="post" enctype="multipart/form-data" asp-action="Create">
     <div class="form-group row">
+
+        <br />
+        <br />
 
         <div class="col-2">
             <label asp-for="Brands"></label>
         </div>
 
         <div class="col-4">
-            <select asp-for="Bike.BrandId" asp-items="Model.Brands.ToSelectListItem()" class="form-control" id="Brand"></select>
+            <select asp-for="Bike.BrandId" asp-items="Model.Brands.ToSelectListItem()" class="form-control"></select>
+            <span asp-validation-for="Bike.BrandId" class="text-danger"></span>
         </div>
 
-   @*      <div class="col-auto">
+
+        <div class="col-auto">
             <label asp-for="Bike.ImagePath"></label>
         </div>
+        <br />
 
         <div class="col-3">
             <input type="file" name="files" class="form-control" />
-        </div> *@
+        </div>
 
     </div>
+
+    <br/>
     <div class="form-group row">
         <div class="col-2">
             <label asp-for="Models"></label>
         </div>
 
         <div class="col-4">
-            <select asp-for="Bike.ModelID" asp-items="Model.Models.ToSelectListItem()" class="form-control" id="Model"></select>
+            <select asp-for="Bike.ModelID" asp-items="Model.Models.ToSelectListItem()" class="form-control"></select>
             <span asp-validation-for="Bike.ModelID" class="text-danger"></span>
         </div>
     </div>
+
+    <br />
+
+
     <div class="form-group row">
         <div class="col-2">
             <label asp-for="Bike.Year"></label>
@@ -46,6 +59,9 @@
             <span asp-validation-for="Bike.Year" class="text-danger"></span>
         </div>
     </div>
+
+    <br />
+
     <div class="form-group row">
         <div class="col-2">
             <label asp-for="Bike.Mileage"></label>
@@ -57,7 +73,7 @@
         </div>
     </div>
 
-
+    <br />
 
     <div class="form-group row">
         <div class="col-2">
@@ -68,16 +84,21 @@
             <Input asp-for="Bike.Price" class="form-control" />
             <span asp-validation-for="Bike.Price" class="text-danger"></span>
         </div>
-        <div class="col-1">
+
+        <br />
+
+        <div class="col-2">
             <label asp-for="Bike.PaymentMethod"></label>
         </div>
+        <br />
 
         <div class="col-2">
             <select asp-for="Bike.PaymentMethod" asp-items="Model.PaymentMethods.ToSelectListItem()" class="form-control"></select>
             <span asp-validation-for="Bike.PaymentMethod" class="text-danger"></span>
         </div>
-
     </div>
+
+    <br />
     <div class="form-group row">
         <div class="col-2">
             <label asp-for="Bike.Features"></label>
@@ -87,6 +108,9 @@
             <textarea asp-for="Bike.Features" class="form-control"></textarea>
         </div>
     </div>
+
+    <br />
+
     <div class="form-group row">
         <div class="col-2">
             <label asp-for="Bike.SellerName"></label>
@@ -97,6 +121,9 @@
             <span asp-validation-for="Bike.SellerName" class="text-danger"></span>
         </div>
     </div>
+
+    <br />
+
     <div class="form-group row">
         <div class="col-2">
             <label asp-for="Bike.SellerEmail"></label>
@@ -107,6 +134,9 @@
             <span asp-validation-for="Bike.SellerEmail" class="text-danger"></span>
         </div>
     </div>
+
+    <br />
+
     <div class="form-group row">
         <div class="col-2">
             <label asp-for="Bike.SellerPhone"></label>
@@ -117,6 +147,9 @@
             <span asp-validation-for="Bike.SellerPhone" class="text-danger"></span>
         </div>
     </div>
+@* 
+    <br />
+
 
     <div class="form-group row">
         <div class="col-2">
@@ -125,11 +158,12 @@
 
         <div class="col-4">
             <Input asp-for="Bike.SellerLocation" class="form-control" />
-            <span asp-validation-for="Bike.SellerLocation" class="text-danger"></span>
+            
         </div>
-    </div>
+    </div> *@
 
     <br />
+
     <div class="form-group">
         <input type="submit" class="btn btn-primary" value="Create" />
         <a asp-action="Index" class="btn btn-success">Back</a>
