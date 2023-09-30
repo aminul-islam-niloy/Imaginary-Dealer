@@ -106,6 +106,7 @@
 
         <div class="col-4">
             <textarea asp-for="Bike.Features" class="form-control"></textarea>
+            <span asp-validation-for="Bike.Features" class="text-danger"></span>
         </div>
     </div>
 
@@ -147,17 +148,19 @@
             <span asp-validation-for="Bike.SellerPhone" class="text-danger"></span>
         </div>
     </div>
-@* 
+
     <br />
 
 
-    <div class="form-group row">
+   @*  <div class="form-group row">
         <div class="col-2">
             <label asp-for="Bike.SellerLocation"></label>
         </div>
 
         <div class="col-4">
             <Input asp-for="Bike.SellerLocation" class="form-control" />
+            <span asp-validation-for="Bike.SellerLocation" class="text-danger"></span>
+
             
         </div>
     </div> *@

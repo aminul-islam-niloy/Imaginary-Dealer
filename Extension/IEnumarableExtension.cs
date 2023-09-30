@@ -3,28 +3,28 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Imaginary_Dealer.Extension
 {
-    public static class IEnumarableExtension
+    public static class IEnumerableExtensions
     {
-        public static IEnumerable<SelectListItem> ToSelectListItem<T>(this IEnumerable<T> Items)
+        public static IEnumerable<SelectListItem> ToSelectListItem<T>(this IEnumerable<T> Items, int selectedValue = 0)
         {
-            List<SelectListItem> list = new List<SelectListItem>();
-            SelectListItem item = new SelectListItem
+            List<SelectListItem> List = new List<SelectListItem>();
+            SelectListItem sli = new SelectListItem
             {
                 Text = "---Select---",
                 Value = "0"
             };
-            list.Add(item);
-
-            foreach (var brand in Items)
+            List.Add(sli);
+            foreach (var Item in Items)
             {
-                item = new SelectListItem
+                sli = new SelectListItem
                 {
-                    Text = brand.GetPropertyValue("Name"),
-                    Value = brand.GetPropertyValue("Id")
+                    Text = Item.GetPropertyValue("Name"),
+                    Value = Item.GetPropertyValue("Id"),
+                    Selected = Item.GetPropertyValue("Id").Equals(selectedValue.ToString())
                 };
-                list.Add(item);
+                List.Add(sli);
             }
-            return list;
+            return List;
         }
     }
 }
