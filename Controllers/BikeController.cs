@@ -16,16 +16,21 @@ namespace Imaginary_Dealer.Controllers
     public class BikeController : Controller
     {
         private readonly Im_Dealer_DB_Contex _db;
+
         private readonly IWebHostEnvironment _HostingEnvironment;
+        //private readonly HostingEnvironment _HostingEnvironment;
+
 
 
         [BindProperty]
+
         public BikeViewModelSection BikeViewModel { get; set; }
 
         public BikeController(Im_Dealer_DB_Contex db, IWebHostEnvironment webHostEnvironment)
         {
             _db = db;
             _HostingEnvironment = webHostEnvironment;
+           // _HostingEnvironment = (HostingEnvironment?)hostingEnvironment;
             BikeViewModel = new BikeViewModelSection()
             {
                 Brands = _db.Brands.ToList(),
@@ -48,24 +53,72 @@ namespace Imaginary_Dealer.Controllers
         }
 
 
-        //[HttpPost, ActionName("Create")]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult CreatePost()
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        BikeViewModel.Brands = _db.Brands.ToList();
-        //        BikeViewModel.Models = _db.Models.ToList();
-        //        return View(BikeViewModel);
-        //    }
-        //    _db.Bikes.Add(BikeViewModel.Bike);
+        [HttpPost, ActionName("Create")]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreatePost()
+        {
+            try
+            {
 
-        //    UploadImageIfAvailable();
 
-        //    _db.SaveChanges();
 
-        //    return RedirectToAction(nameof(Index));
-        //}
+                if (!ModelState.IsValid)
+                {
+                    BikeViewModel.Brands = _db.Brands.ToList();
+                    BikeViewModel.Models = _db.Models.ToList();
+                    return View(BikeViewModel);
+                }
+                _db.Bikes.Add(BikeViewModel.Bike);
+                _db.SaveChanges();
+
+                //Get BikeID we have saved in database            
+                var BikeID = BikeViewModel.Bike.Id;
+
+                //Get wwrootPath to save the file on server
+                string wwrootPath = _HostingEnvironment.WebRootPath;
+
+                //Get the Uploaded files
+                var files = HttpContext.Request.Form.Files;
+
+                //Get the reference of DBSet for the bike we have saved in our database
+                var SavedBike = _db.Bikes.Find(BikeID);
+
+
+                //   Upload the file on server and save the path in database if user have submitted file
+                if (files.Count != 0)
+                {
+
+                    var ImagePath = @"images\bike\";
+                    //Create the relative image path to be saved in database table 
+
+                    //Extract the extension of submitted file
+                    var Extension = Path.GetExtension(files[0].FileName);
+
+                    var RelativeImagePath = ImagePath + BikeID + Extension;
+
+                    //Create absolute image path to upload the physical file on server
+                    var AbsImagePath = Path.Combine(wwrootPath, RelativeImagePath);
+
+
+                    //Upload the file on server using Absolute Path
+                    using (var filestream = new FileStream(AbsImagePath, FileMode.Create))
+                    {
+                        files[0].CopyTo(filestream);
+                    }
+
+                    //Set the path in database
+                    SavedBike.ImagePath = RelativeImagePath;
+                    _db.SaveChanges();
+                }
+
+            } catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = ex.Message;
+            }
+
+
+            return RedirectToAction(nameof(Index));
+        }
 
         //private void UploadImageIfAvailable()
         //{
@@ -113,63 +166,63 @@ namespace Imaginary_Dealer.Controllers
 
 
 
-        [HttpPost, ActionName("Create")]
-        [ValidateAntiForgeryToken]
+        //[HttpPost, ActionName("Create")]
+        //[ValidateAntiForgeryToken]
 
-        public IActionResult CreatePost()
-        {
-            if (BikeViewModel == null || BikeViewModel.Bike == null)
-            {
-                // Handle the case where BikeViewModel or Bike is null
-                return RedirectToAction("Create");
-            }
+        //public IActionResult CreatePost()
+        //{
+        //    if (BikeViewModel == null || BikeViewModel.Bike == null)
+        //    {
+        //        // Handle the case where BikeViewModel or Bike is null
+        //        return RedirectToAction("Create");
+        //    }
 
-            // Check if ModelState is valid before proceeding
-            if (!ModelState.IsValid)
-            {
-                BikeViewModel.Brands = _db.Brands.ToList();
-                BikeViewModel.Models = _db.Models.ToList();
-                // Model validation failed, return to the Create view with validation errors
-                return View("Create", BikeViewModel);
-            }
+        //    // Check if ModelState is valid before proceeding
+        //    if (!ModelState.IsValid)
+        //    {
+        //        BikeViewModel.Brands = _db.Brands.ToList();
+        //        BikeViewModel.Models = _db.Models.ToList();
+        //        // Model validation failed, return to the Create view with validation errors
+        //        return View("Create", BikeViewModel);
+        //    }
 
-            _db.Bikes.Add(BikeViewModel.Bike);
-            _db.SaveChanges();
+        //    _db.Bikes.Add(BikeViewModel.Bike);
+        //    _db.SaveChanges();
 
-            // Save bike photos in the database
-            var BikeID = BikeViewModel.Bike.Id;
-            string wwrootPath = _HostingEnvironment.WebRootPath;
-            var files = HttpContext.Request.Form.Files;
+        //    // Save bike photos in the database
+        //    var BikeID = BikeViewModel.Bike.Id;
+        //    string wwrootPath = _HostingEnvironment.WebRootPath;
+        //    var files = HttpContext.Request.Form.Files;
 
-            if (files != null && files.Count > 0)
-            {
-                var ImagePath = @"C:\Users\niloy\source\repos\Imaginary Dealer\wwwroot\images\bike\";
-                var Extension = Path.GetExtension(files[0].FileName);
-                var RelativeImagePath = ImagePath + BikeID + Extension;
+        //    if (files != null && files.Count > 0)
+        //    {
+        //        var ImagePath = @"C:\Users\niloy\source\repos\Imaginary Dealer\wwwroot\images\bike\";
+        //        var Extension = Path.GetExtension(files[0].FileName);
+        //        var RelativeImagePath = ImagePath + BikeID + Extension;
 
-                // Create absolute image path to upload the physical file on the server
-                var AbsImagePath = Path.Combine(wwrootPath, RelativeImagePath);
+        //        // Create absolute image path to upload the physical file on the server
+        //        var AbsImagePath = Path.Combine(wwrootPath, RelativeImagePath);
 
-                // Upload the file on the server using Absolute Path
-                using (var filestream = new FileStream(AbsImagePath, FileMode.Create))
-                {
-                    files[0].CopyTo(filestream);
-                }
+        //        // Upload the file on the server using Absolute Path
+        //        using (var filestream = new FileStream(AbsImagePath, FileMode.Create))
+        //        {
+        //            files[0].CopyTo(filestream);
+        //        }
 
-                // Set the path in the database
-                var SavedBike = _db.Bikes.Find(BikeID);
-                if (SavedBike != null)
-                {
-                    SavedBike.ImagePath = RelativeImagePath;
-                    _db.SaveChanges();
-                }
-            }
+        //        // Set the path in the database
+        //        var SavedBike = _db.Bikes.Find(BikeID);
+        //        if (SavedBike != null)
+        //        {
+        //            SavedBike.ImagePath = RelativeImagePath;
+        //            _db.SaveChanges();
+        //        }
+        //    }
 
-            // Save changes to the database (outside the if block)
-            _db.SaveChanges();
+        //    // Save changes to the database (outside the if block)
+        //    _db.SaveChanges();
 
-            return RedirectToAction("Index");
-        }
+        //    return RedirectToAction("Index");
+        //}
 
 
 
@@ -203,21 +256,21 @@ namespace Imaginary_Dealer.Controllers
         //    return RedirectToAction("Index");
         //}
 
-        //[HttpPost]
-        //public IActionResult Delete(int id)
-        //{
-        //    Model model = _db.Models.Find(id);
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            Bike bike = _db.Bikes.Find(id);
 
-        //    if (model == null)
-        //    {
-        //        return NotFound();
+            if (bike == null)
+            {
+                return NotFound();
 
-        //    }
-        //    _db.Remove(model);
-        //    _db.SaveChanges();
-        //    return RedirectToAction("Index");
+            }
+            _db.Bikes.Remove(bike);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
 
-        //}
+        }
 
 
 

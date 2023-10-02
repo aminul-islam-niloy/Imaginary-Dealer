@@ -9,22 +9,25 @@ namespace Imaginary_Dealer.Models.ViewModels
         public IEnumerable<Model> Models { get; set; }
         public IEnumerable<PaymentMethod> PaymentMethods { get; set; }
 
+   
+
+        private List<PaymentMethod> PList= new List<PaymentMethod>();
+
+        // Populate Payment Method directly
+        private  List<PaymentMethod> PaymentList()
+        {
+
+            PList.Add(new PaymentMethod("Cash on", "Cash on Delivery"));
+            PList.Add(new PaymentMethod("Moblile Banking", "bKash, Nogod, or Rocket"));
+            PList.Add(new PaymentMethod("Banking", "Banking"));
+            return PList;
+
+        }
+
         // Constructor
         public BikeViewModelSection()
         {
-            PaymentMethods = PaymentMethodList();
-        }
-
-        // Populate Payment Method directly
-        private static List<PaymentMethod> PaymentMethodList()
-        {
-            var methodList = new List<PaymentMethod>
-            {
-                new PaymentMethod("Cash on", "Cash on Delivery"),
-                new PaymentMethod("Moblile Banking", "bKash, Nogod, or Rocket"),
-                new PaymentMethod("Banking", "Banking")
-            };
-            return methodList;
+            PaymentMethods = PaymentList();
         }
     }
 
