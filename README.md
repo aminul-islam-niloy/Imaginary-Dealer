@@ -97,6 +97,7 @@ so that existing value of  brand and model did not delete.
 4. Create Bike View model and Make payment method sysyem for view features
 5. Add New BikeController in Controller
 6.Add Index page razor view and design like model
+1. function will bre continued. 
 
 
 

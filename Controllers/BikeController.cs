@@ -108,6 +108,7 @@ namespace Imaginary_Dealer.Controllers
 
                     //Set the path in database
                     SavedBike.ImagePath = RelativeImagePath;
+
                     _db.SaveChanges();
                 }
 
